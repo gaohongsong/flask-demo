@@ -30,7 +30,7 @@ def user(username):
 def post(post_id):
     f = request.files['the_file']
     filename = '%s_upload' % secure_filename(f.filename)
-    f.save(os.path.join(current_app.config['BASE_DIR'], filename))
+    f.save(os.path.join(current_app.root_path, filename))
 
     return 'post_id: %s' % post_id
 

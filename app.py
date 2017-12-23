@@ -1,25 +1,20 @@
 # -*- coding: utf-8 -*-
-import os
-
 from flask import (
     Flask, Blueprint, request, session, g,
     redirect, url_for, abort, render_template,
     flash, current_app, make_response
 )
 
-from common import logger
 from common.http import JsonResponse
 from common.converters import ListConverter
+from common import factory
 
-from blueprints import login, error, api, test
+# from blueprints import login, error, api, test
 
 app = Flask(__name__, template_folder='templates', static_folder='static')
 
 # load config file from config.py first
 app.config.from_object('config')
-
-# setup logfile
-logger.setup(app, 'flask.log')
 
 # return json response
 app.response_class = JsonResponse
@@ -27,11 +22,12 @@ app.response_class = JsonResponse
 # register a new converter
 app.url_map.converters.update(list=ListConverter)
 
-# register blueprints
-app.register_blueprint(login.bp)
-app.register_blueprint(error.bp)
-app.register_blueprint(api.bp)
-app.register_blueprint(test.bp)
+# setup logfile
+factory.add_file_logger(app, 'flask.log')
+
+# register blueprints's blueprint, named by 'bp'
+# app.register_blueprint(api.bp)
+factory.register_blueprints(app, 'blueprints')
 
 
 @app.route('/')

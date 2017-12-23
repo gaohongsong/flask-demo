@@ -40,7 +40,7 @@ DEBUG = True
 SECRET_KEY = os.urandom(24)
 SESSION_COOKIE_NAME = 'flask_session'
 
-# root directory
+# root directory -> app.root_path
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # import settings from local
