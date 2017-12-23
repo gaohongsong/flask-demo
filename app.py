@@ -6,6 +6,8 @@ from flask import request, url_for, session, escape
 from flask import redirect, abort, make_response, render_template
 from werkzeug.utils import secure_filename
 
+from common.http import JsonResponse
+
 app = Flask(__name__)
 
 # load config file from config.py
@@ -24,6 +26,9 @@ if app.debug is not True:
     formatter = logging.Formatter("[ %(asctime)s ][ %(levelname)s ][ %(name)s ]: %(message)s")
     file_handler.setFormatter(formatter)
     app.logger.addHandler(file_handler)
+
+# return json response
+app.response_class = JsonResponse
 
 
 @app.route('/')
@@ -96,6 +101,15 @@ def cookies():
 
     resp.set_cookie('hello', 'world')
     return resp
+
+
+@app.route('/get_json')
+def get_json():
+    return {
+        'result': True,
+        'data': 123,
+        'messge': 'success'
+    }
 
 
 if __name__ == '__main__':

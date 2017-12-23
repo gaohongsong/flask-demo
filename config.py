@@ -38,6 +38,7 @@ import os
 # code reload/debug online
 DEBUG = True
 SECRET_KEY = os.urandom(24)
+SESSION_COOKIE_NAME = 'flask_session'
 
 # root directory
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
