@@ -5,15 +5,12 @@ from flask import (
     flash, current_app, make_response
 )
 
-from flask_sqlalchemy import SQLAlchemy
-
 from common.http import JsonResponse
-from common import app_ext
 from common.converters import ListConverter
+from common import app_ext
+from models import db
 
 app = Flask(__name__, template_folder='templates', static_folder='static')
-db = SQLAlchemy()
-db.init_app(app)
 
 # load config file from config.py first
 app.config.from_object('config')
@@ -37,8 +34,11 @@ app_ext.register_context_processor(app, {
     'test': 'test<script>alert(1)</script>'
 })
 
-# setup logfile
+# logger init
 app_ext.init_logger(app, 'flask.log')
+
+# db init
+db.init_app(app)
 
 
 def debug_context():

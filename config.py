@@ -45,8 +45,9 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # database info
 DATABASE = 'schema.db'
-SQLALCHEMY_DATABASE_URI = 'sqlite://test.db'
+SQLALCHEMY_DATABASE_URI = 'sqlite:///%s' % DATABASE
 SQLALCHEMY_ECHO = False
+SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 # import settings from local
 try:
