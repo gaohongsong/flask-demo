@@ -100,9 +100,12 @@
      
 ```
 # 安装依赖，py3环境未验证
+
 pip install -r requirements.txt
 
 # 打开调试模式，代码发生变化时，自动重新加载
+
+export FLASK_APP=app.py
 flask run -h 0.0.0.0 -p 5000 --debugger --reload
 ```
 打开本地浏览器，访问：http://127.0.0.1:5000/

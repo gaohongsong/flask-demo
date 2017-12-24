@@ -3,5 +3,8 @@
 Flask==0.12.2
 SQLAlchemy==1.1.15
 Flask-SQLAlchemy==2.3.2
+# MySQL-python==1.2.3
+Py  MySQL==0.6.7
 flask-shell-ipython==0.3.0
 flask-sqlacodegen==1.1.6.1
+ipython==5.5.0

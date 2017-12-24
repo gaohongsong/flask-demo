@@ -32,4 +32,5 @@ DATABASE = DATABASES['default']
 if DATABASE['ENGINE'] == 'sqlite':
     SQLALCHEMY_DATABASE_URI = 'sqlite:///{NAME}'.format(**DATABASE)
 else:
-    SQLALCHEMY_DATABASE_URI = 'mysql://{USER}:{PASSWORD}@{HOST}:{PORT}/{NAME}'.format(**DATABASE)
+    # SQLALCHEMY_DATABASE_URI = 'mysql+mysqldb://{USER}:{PASSWORD}@{HOST}:{PORT}/{NAME}'.format(**DATABASE)
+    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://{USER}:{PASSWORD}@{HOST}:{PORT}/{NAME}'.format(**DATABASE)
