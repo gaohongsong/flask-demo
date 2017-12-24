@@ -7,6 +7,7 @@ Flask-SQLAlchemy==2.3.2
 PyMySQL==0.6.7
 Flask-Migrate==2.1.1
 Flask-Admin==1.5.0
+Flask-Cache==0.13.1
 flask-shell-ipython==0.3.0
 flask-sqlacodegen==1.1.6.1
 ipython==5.5.0
