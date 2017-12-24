@@ -5,6 +5,7 @@
 """
 
 from flask import Flask
+from flask_migrate import Migrate
 
 from common import ext
 from common.http import JsonResponse
@@ -43,5 +44,8 @@ def create_app():
 
     # bind db to app
     db.init_app(app)
+
+    # Flask-Migrate
+    migrate = Migrate(app, db)
 
     return app

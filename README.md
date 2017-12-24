@@ -63,12 +63,36 @@
    ```python
     flask-sqlacodegen --flask  --outfile sqlacodegen_tables.py mysql://root:root@localhost:3306/flask
 ```
+   3. 数据库迁移     
+   数据库的修改和迁移，我们采用`Flask-Migrate`方案，文档参考：https://flask-migrate.readthedocs.io/en/latest/     
+   基本操作如下：      
+   ```python
+    from flask import Flask
+    from flask_sqlalchemy import SQLAlchemy
+    from flask_migrate import Migrate
+    
+    app = Flask(__name__)
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
+    
+    db = SQLAlchemy(app)
+    migrate = Migrate(app, db)
+    
+    class User(db.Model):
+        id = db.Column(db.Integer, primary_key=True)
+        name = db.Column(db.String(128))
+    
+    # 操作方法   
+    pip install Flask-Migrate
+    flask db init
+    flask db migrate
+    flask db upgrade
+```
 
-## 三. 工程依赖
+## 三. 自定义指令
 
 &emsp;&emsp;目前已经定义了`3`条自定义指令：
-  1. flush init_db  
-    初始化数据库，重建表。注意，该指令会drop所有表后重建表
+  1. flush reset_db  
+    复位数据库，重建表。注意，该指令会drop所有表后重建表
   2. flush load_schema  
     加载schema.sql文件到db中
   3. flush shell_plus   

@@ -7,9 +7,9 @@ def command():
     """initial the database."""
 
     with current_app.app_context():
-        print '[%s]: <init db>' % current_app
+        print '[%s]: <reset db>' % current_app
         db.drop_all()
         db.create_all()
 
 
-command.name = 'init_db'
+command.name = 'reset_db'
