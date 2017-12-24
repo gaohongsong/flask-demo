@@ -51,10 +51,11 @@ def create_app():
     migrate = Migrate(app, db)
 
     # Flask-Admin
-    admin = Admin(app, name='microblog', template_mode='bootstrap3')
+    admin = Admin(app, name='Flask-Admin', template_mode='bootstrap3')
     admin.add_view(ModelView(User, db.session))
     admin.add_view(ModelView(Post, db.session))
     admin.add_view(ModelView(Address, db.session))
     admin.add_view(ModelView(Category, db.session))
+    admin.add_view(ModelView(Todo, db.session))
 
     return app
