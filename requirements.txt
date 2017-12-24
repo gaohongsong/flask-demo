@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
 
 Flask==0.12.2
+SQLAlchemy==1.1.15
 Flask-SQLAlchemy==2.3.2
+flask-shell-ipython==0.3.0
+flask-sqlacodegen==1.1.6.1

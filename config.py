@@ -43,14 +43,29 @@ SESSION_COOKIE_NAME = 'flask_session'
 # root directory -> app.root_path
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-# database info
-DATABASE = 'schema.db'
-SQLALCHEMY_DATABASE_URI = 'sqlite:///%s' % DATABASE
-SQLALCHEMY_ECHO = False
-SQLALCHEMY_TRACK_MODIFICATIONS = False
+DATABASES = {
+    'default': {
+        'HOST': 'localhost',
+        'ENGINE': 'mysql',
+        'PORT': 3306,
+        'NAME': 'flask',
+        'USER': 'root',
+        'PASSWORD': 'root',
+    },
+}
 
 # import settings from local
 try:
     from local_settings import *
 except:
     pass
+
+# database info
+DATABASE = DATABASES['default']
+if DATABASE['ENGINE'] == 'sqlite':
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///{NAME}'.format(**DATABASE)
+else:
+    SQLALCHEMY_DATABASE_URI = 'mysql://{USER}:{PASSWORD}@{HOST}:{PORT}/{NAME}'.format(**DATABASE)
+
+SQLALCHEMY_ECHO = False
+SQLALCHEMY_TRACK_MODIFICATIONS = False

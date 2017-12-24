@@ -41,7 +41,7 @@ class Todo(db.Model):
     __tablename__ = 'todos'
     id = db.Column('todo_id', db.Integer, primary_key=True)
     title = db.Column(db.String(60))
-    text = db.Column(db.String)
+    text = db.Column(db.Text)
     done = db.Column(db.Boolean)
     pub_date = db.Column(db.DateTime)
 
