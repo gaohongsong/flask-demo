@@ -5,18 +5,16 @@
 """
 
 from flask import Flask
-from flask_migrate import Migrate
-from flask_admin import Admin
-from flask_admin.contrib.sqla import ModelView
 
 from common import ext
 from common.http import JsonResponse
 from common.converters import ListConverter
 from common.database import db
-from models import *
+from models.admin import admin
+from models import migrate
+
 
 def create_app():
-
     # app = Flask('flaskr')
 
     app = Flask(__name__, template_folder='templates', static_folder='static')
@@ -48,14 +46,9 @@ def create_app():
     db.init_app(app)
 
     # Flask-Migrate
-    migrate = Migrate(app, db)
+    migrate.init_app(app, db)
 
     # Flask-Admin
-    admin = Admin(app, name='Flask-Admin', template_mode='bootstrap3')
-    admin.add_view(ModelView(User, db.session))
-    admin.add_view(ModelView(Post, db.session))
-    admin.add_view(ModelView(Address, db.session))
-    admin.add_view(ModelView(Category, db.session))
-    admin.add_view(ModelView(Todo, db.session))
+    admin.init_app(app)
 
     return app
