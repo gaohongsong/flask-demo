@@ -7,7 +7,7 @@ class User(db.Model):
     username = db.Column(db.String(80), unique=True)
     email = db.Column(db.String(120), unique=True)
 
-    def __init__(self, username, email):
+    def __init__(self, username='', email=''):
         self.username = username
         self.email = email
 
@@ -22,7 +22,7 @@ class Address(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     user = db.relationship('User', backref=db.backref('address', lazy='dynamic'))
 
-    def __init__(self, email_address, user):
+    def __init__(self, email_address='', user=None):
         self.email_address = email_address
         self.user = user
 

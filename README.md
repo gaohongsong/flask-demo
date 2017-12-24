@@ -151,6 +151,23 @@ flask run -h 0.0.0.0 -p 5000 --debugger --reload
     
 ```
 
+可能会遇到的错误：
+> File "c:\python27\lib\site-packages\flask_admin\contrib\sqla\view.py", line 1071, in create_model
+model = self.model()
+TypeError: __init__() takes exactly 3 arguments (1 given)
+ 
+解决方法：修改model的构造函数，为所有参数提供默认值
+
+```python
+    def __init__(self, name):
+        self.name = name
+```
+改为：
+```python
+    def __init__(self, name=''):
+        self.name = name
+```
+
 
 ## 八. 工程依赖
 

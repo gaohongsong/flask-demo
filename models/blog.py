@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import datetime
+from datetime import datetime
 
 from . import db
 
@@ -14,7 +14,7 @@ class Post(db.Model):
     category = db.relationship('Category',
                                backref=db.backref('posts', lazy='dynamic'))
 
-    def __init__(self, title, body, category, pub_date=None):
+    def __init__(self, title='', body='', category=None, pub_date=None):
         self.title = title
         self.body = body
         if pub_date is None:
@@ -31,7 +31,7 @@ class Category(db.Model):
     name = db.Column(db.String(50))
     desc = db.Column(db.String(50))
 
-    def __init__(self, name):
+    def __init__(self, name=''):
         self.name = name
 
     def __repr__(self):
@@ -46,7 +46,7 @@ class Todo(db.Model):
     done = db.Column(db.Boolean)
     pub_date = db.Column(db.DateTime)
 
-    def __init__(self, title, text):
+    def __init__(self, title='', text=''):
         self.title = title
         self.text = text
         self.done = False
