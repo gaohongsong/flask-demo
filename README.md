@@ -210,7 +210,13 @@ cached_comments = get_all_comments()
 Flask==0.12.2
 SQLAlchemy==1.1.15
 Flask-SQLAlchemy==2.3.2
+# MySQL-python==1.2.3
+PyMySQL==0.6.7
+Flask-Migrate==2.1.1
+Flask-Admin==1.5.0
+Flask-Cache==0.13.1
 flask-shell-ipython==0.3.0
 flask-sqlacodegen==1.1.6.1
+ipython==5.5.0
 
 ```
