@@ -6,12 +6,14 @@
 
 from flask import Flask
 from flask_migrate import Migrate
+from flask_admin import Admin
+from flask_admin.contrib.sqla import ModelView
 
 from common import ext
 from common.http import JsonResponse
 from common.converters import ListConverter
 from common.database import db
-
+from models import *
 
 def create_app():
 
@@ -47,5 +49,12 @@ def create_app():
 
     # Flask-Migrate
     migrate = Migrate(app, db)
+
+    # Flask-Admin
+    admin = Admin(app, name='microblog', template_mode='bootstrap3')
+    admin.add_view(ModelView(User, db.session))
+    admin.add_view(ModelView(Post, db.session))
+    admin.add_view(ModelView(Address, db.session))
+    admin.add_view(ModelView(Category, db.session))
 
     return app

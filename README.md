@@ -134,7 +134,25 @@ flask run -h 0.0.0.0 -p 5000 --debugger --reload
 ```
 打开本地浏览器，访问：http://127.0.0.1:5000/
 
-## 六. 工程依赖
+## 七. Flask-Admin
+
+提供数据模型的增删改查操作，类似Django-Admin，参考文档：http://flask-admin.readthedocs.io/en/latest/
+
+```python
+    from flask_admin import Admin
+    from flask_admin.contrib.sqla import ModelView    
+    
+    # Flask-Admin
+    admin = Admin(app, name='microblog', template_mode='bootstrap3')
+    admin.add_view(ModelView(User, db.session))
+    admin.add_view(ModelView(Post, db.session))
+    admin.add_view(ModelView(Address, db.session))
+    admin.add_view(ModelView(Category, db.session))
+    
+```
+
+
+## 八. 工程依赖
 
 目前工程依赖列表见requirements.txt文件：
 
