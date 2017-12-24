@@ -43,6 +43,11 @@ SESSION_COOKIE_NAME = 'flask_session'
 # root directory -> app.root_path
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
+# database info
+DATABASE = 'schema.db'
+SQLALCHEMY_DATABASE_URI = 'sqlite://test.db'
+SQLALCHEMY_ECHO = False
+
 # import settings from local
 try:
     from local_settings import *

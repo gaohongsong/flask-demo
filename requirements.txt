@@ -1,1 +1,4 @@
+# -*- coding: utf-8 -*-
+
 Flask==0.12.2
+Flask-SQLAlchemy==2.3.2
