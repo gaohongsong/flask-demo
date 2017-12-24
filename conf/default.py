@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
     #: Default configuration parameters.
     default_config = ImmutableDict({
@@ -35,37 +34,24 @@
 
 import os
 
+# root directory -> app.root_path
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
 # code reload/debug online
 DEBUG = True
 SECRET_KEY = os.urandom(24)
 SESSION_COOKIE_NAME = 'flask_session'
 
-# root directory -> app.root_path
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-
 DATABASES = {
     'default': {
-        'HOST': 'localhost',
-        'ENGINE': 'mysql',
-        'PORT': 3306,
-        'NAME': 'flask',
-        'USER': 'root',
-        'PASSWORD': 'root',
+        'HOST': '',
+        'ENGINE': 'sqlite3',
+        'PORT': '',
+        'NAME': '',
+        'USER': '',
+        'PASSWORD': '',
     },
 }
-
-# import settings from local
-try:
-    from local_settings import *
-except:
-    pass
-
-# database info
-DATABASE = DATABASES['default']
-if DATABASE['ENGINE'] == 'sqlite':
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///{NAME}'.format(**DATABASE)
-else:
-    SQLALCHEMY_DATABASE_URI = 'mysql://{USER}:{PASSWORD}@{HOST}:{PORT}/{NAME}'.format(**DATABASE)
-
+# basic sqlalchemy settings
 SQLALCHEMY_ECHO = False
 SQLALCHEMY_TRACK_MODIFICATIONS = False

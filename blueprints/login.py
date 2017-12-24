@@ -19,7 +19,7 @@ def login():
             error = 'Invalid credentials'
         else:
             flash('You were successfully logged in')
-            return redirect(url_for('index'))
+            return redirect(url_for('root.index'))
 
     current_app.logger.error('please login first.')
     return render_template('login.html', error=error)
@@ -28,4 +28,4 @@ def login():
 @bp.route('/logout/')
 def logout():
     session.pop('username', None)
-    return redirect(url_for('index'))
+    return redirect(url_for('root.index'))
