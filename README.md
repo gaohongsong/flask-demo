@@ -169,6 +169,38 @@ TypeError: __init__() takes exactly 3 arguments (1 given)
 ```
 
 
+## 八. Flask-Cache
+
+Flask缓存参考链接：https://pythonhosted.org/Flask-Cache/
+
+> Built-in cache types:
+null: NullCache (default)
+simple: SimpleCache
+memcached: MemcachedCache (pylibmc or memcache required)
+gaememcached: GAEMemcachedCache
+redis: RedisCache (Werkzeug 0.7 required)
+filesystem: FileSystemCache
+saslmemcached: SASLMemcachedCache (pylibmc required)
+
+
+```python
+cache = Cache(config={'CACHE_TYPE': 'simple'})
+
+app = Flask(__name__)
+cache.init_app(app)
+
+@cache.cached(timeout=50)
+def index():
+    return render_template('index.html')
+
+@cache.cached(timeout=50, key_prefix='all_comments')
+def get_all_comments():
+    comments = do_serious_dbio()
+    return [x.author for x in comments]
+
+cached_comments = get_all_comments()
+```
+
 ## 八. 工程依赖
 
 目前工程依赖列表见requirements.txt文件：

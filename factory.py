@@ -10,6 +10,7 @@ from common import ext
 from common.http import JsonResponse
 from common.converters import ListConverter
 from common.database import db
+from common.cache import simple_cache
 from models.admin import admin
 from models import migrate
 
@@ -50,5 +51,8 @@ def create_app():
 
     # Flask-Admin
     admin.init_app(app)
+
+    # Flask-Cache
+    simple_cache.init_app(app)
 
     return app
