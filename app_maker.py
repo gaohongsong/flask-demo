@@ -11,7 +11,7 @@ from common.http import JsonResponse
 from common.converters import ListConverter
 from common.extensions import (cache, db, admin, logger, migrate,
                                bcrypt, csrf_protect, login_manager,
-                               debug_toolbar)
+                               debug_toolbar, webpack)
 
 
 def create_app(name=__name__):
@@ -53,7 +53,8 @@ def register_extensions(app):
     csrf_protect.init_app(app)
     login_manager.init_app(app)
     debug_toolbar.init_app(app)
-    # webpack.init_app(app)
+    webpack.init_app(app)
+
     return None
 
 

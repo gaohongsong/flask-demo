@@ -10,7 +10,7 @@
 
   <title>{% block page_title %}
   
-    ckct_fkapp
+    flask-demo
   
     {% endblock %}
   </title>
@@ -20,8 +20,8 @@
   <!-- Mobile viewport optimized: h5bp.com/viewport -->
   <meta name="viewport" content="width=device-width">
 
-  {##{ stylesheet_tag('main_css') | safe }##}
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+  {{ stylesheet_tag('main_css') | safe }}
+
   {% block css %}{% endblock %}
 
 </head>
@@ -58,7 +58,7 @@
 {% include "footer.html" %}
 
 <!-- JavaScript at the bottom for fast page loading -->
-{##{ javascript_tag('main_js') | safe }##}
+{{ javascript_tag('main_js') | safe }}
 {% block js %}{% endblock %}
 <!-- end scripts -->
 {% endblock %}

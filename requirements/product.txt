@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-
 # Flask
 Flask==0.12.2
 MarkupSafe==1.0

@@ -34,9 +34,6 @@
 
 import os
 
-# root directory -> app.root_path
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-
 # code reload/debug online
 ENV = 'develop'
 DEBUG = True
@@ -61,4 +58,5 @@ DEBUG_TB_INTERCEPT_REDIRECTS = False
 CACHE_TYPE = 'simple'  # Can be "memcached", "redis", etc.
 SQLALCHEMY_ECHO = False
 SQLALCHEMY_TRACK_MODIFICATIONS = False
-# WEBPACK_MANIFEST_PATH = 'webpack/manifest.json'
+WEBPACK_MANIFEST_PATH = 'webpack/manifest.json'
+WTF_CSRF_ENABLED = False  # Allows form testing

@@ -9,6 +9,8 @@ from conf.default import *
 # ========================================================================================
 #                               IMPORT ENV SETTINGS
 # ========================================================================================
+# root directory -> app.root_path
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 APP_ENV = os.environ.get('APP_ENV', 'develop')
 conf_mod = 'conf.settings_{APP_ENV}'.format(APP_ENV=APP_ENV)

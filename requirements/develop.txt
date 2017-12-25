@@ -1,5 +1,5 @@
 # Everything the developer needs in addition to the production requirements
--r prod.txt
+-r product.txt
 
 # Testing
 pytest==3.3.1
