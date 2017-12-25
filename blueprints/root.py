@@ -44,6 +44,7 @@ def home():
             return redirect(redirect_url)
         else:
             flash_errors(form)
+
     return render_template('root/home.html', form=form)
 
 
@@ -74,6 +75,8 @@ def register():
 def about():
     """About page."""
     current_app.logger.info('test only.')
-    cached_comments = get_all_comments()
+    # test only
+
+    get_all_comments()
     form = LoginForm(request.form)
     return render_template('root/about.html', form=form)

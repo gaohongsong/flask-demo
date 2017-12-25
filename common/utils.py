@@ -7,7 +7,6 @@ from werkzeug.utils import find_modules
 from importlib import import_module
 
 
-
 def flash_errors(form, category='warning'):
     """Flash all errors for a form."""
     for field, errors in form.errors.items():
@@ -28,7 +27,7 @@ def import_to_context(pkg, locals_context):
             mod_attr = getattr(mod, attr)
 
             # skip
-            if not isinstance(mod_attr, DefaultMeta):
+            if not isinstance(mod_attr, DefaultMeta) or attr in locals_context:
                 continue
 
             # import db.Model

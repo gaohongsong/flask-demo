@@ -18,7 +18,6 @@ def command():
     """
 
     from flask.globals import _app_ctx_stack
-    from common.utils import import_to_context
     app = _app_ctx_stack.top.app
 
     banner1 = '''Python %s on %s
@@ -33,12 +32,6 @@ Db: %s''' % (
         json.dumps(app.config['DATABASE'], indent=2)
     )
     shell_name_space = app.make_shell_context()
-
-    # import models
-    print 'from models import db'
-    from common.database import db
-    import_to_context('models', shell_name_space)
-    shell_name_space.update(db=db)
 
     try:
         import IPython

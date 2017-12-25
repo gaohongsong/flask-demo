@@ -4,7 +4,7 @@
     remark: copy from flaskr demo in flask/examples
 """
 
-from flask import Flask
+from flask import Flask, render_template
 from werkzeug.utils import find_modules, import_string
 
 from common.http import JsonResponse
@@ -12,7 +12,9 @@ from common.converters import ListConverter
 from common.extensions import (cache, db, logger, migrate,
                                bcrypt, csrf_protect, login_manager,
                                debug_toolbar, webpack)
+
 from models.admin import admin
+from common.utils import import_to_context
 
 
 def create_app(name=__name__):
@@ -37,6 +39,10 @@ def create_app(name=__name__):
     register_commands(app)
 
     register_extensions(app)
+
+    register_errorhandlers(app)
+
+    register_shellcontext(app)
 
     return app
 
@@ -83,6 +89,39 @@ def register_commands(app, pkg='commands'):
             print '[{}]register cmd: {}'.format(name, e)
 
     return None
+
+
+def register_errorhandlers(app):
+    """Register error handlers."""
+
+    def render_error(error):
+        """Render error template."""
+        # If a HTTPException, pull the `code` attribute; default to 500
+        error_code = getattr(error, 'code', 500)
+        return render_template('{0}.html'.format(error_code)), error_code
+
+    for errcode in [401, 404, 500]:
+        app.register_error_handler(errcode, render_error)
+        # app.errorhandler(errcode)(render_error)
+    return None
+
+
+def register_shellcontext(app):
+    """Register shell context objects."""
+
+    def shell_context():
+        """Shell context objects."""
+
+        extra_context = {
+            'db': db
+        }
+
+        # import models to shell_context
+        import_to_context('models', extra_context)
+        # print 'Shell Context: %s' % extra_context
+        return extra_context
+
+    app.shell_context_processor(shell_context)
 
 
 def register_teardowns(app, func):
