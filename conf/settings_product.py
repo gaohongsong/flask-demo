@@ -2,9 +2,8 @@
 """
     product settings
 """
-
+ENV = 'product'
 DEBUG = False
-
 # ============================================
 # database for product
 # ============================================

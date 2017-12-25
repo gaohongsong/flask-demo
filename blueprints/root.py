@@ -6,13 +6,13 @@ from flask import (
     flash, current_app, make_response
 )
 
-from common.cache import simple_cache
+from common.extensions import cache
 
 name = 'root'
 bp = Blueprint(name, __name__, url_prefix='/')
 
 
-@simple_cache.cached(timeout=50, key_prefix='all_comments')
+@cache.cached(timeout=50, key_prefix='all_comments')
 def get_all_comments():
     print 'get_all_comments'
     comments = range(1000)
@@ -20,7 +20,7 @@ def get_all_comments():
 
 
 @bp.route('/')
-@simple_cache.cached(timeout=50)
+@cache.cached(timeout=50)
 def index():
     # test only
     current_app.logger.info('test only.')

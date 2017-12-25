@@ -38,6 +38,7 @@ import os
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # code reload/debug online
+ENV = 'develop'
 DEBUG = True
 SECRET_KEY = os.urandom(24)
 SESSION_COOKIE_NAME = 'flask_session'
@@ -52,6 +53,12 @@ DATABASES = {
         'PASSWORD': '',
     },
 }
-# basic sqlalchemy settings
+
+# BCRYPT_LOG_ROUNDS = 13
+BCRYPT_LOG_ROUNDS = 4  # For faster tests; needs at least 4 to avoid "ValueError: Invalid rounds"
+DEBUG_TB_ENABLED = False  # Disable Debug toolbar
+DEBUG_TB_INTERCEPT_REDIRECTS = False
+CACHE_TYPE = 'simple'  # Can be "memcached", "redis", etc.
 SQLALCHEMY_ECHO = False
 SQLALCHEMY_TRACK_MODIFICATIONS = False
+# WEBPACK_MANIFEST_PATH = 'webpack/manifest.json'

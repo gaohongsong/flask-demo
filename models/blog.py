@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 from datetime import datetime
 
-from . import db
+from common.database import db, Model
 
 
-class Post(db.Model):
+class Post(Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(80))
     body = db.Column(db.Text)
@@ -26,7 +26,7 @@ class Post(db.Model):
         return '<Post %r>' % self.title
 
 
-class Category(db.Model):
+class Category(Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50))
     desc = db.Column(db.String(50))
@@ -36,18 +36,3 @@ class Category(db.Model):
 
     def __repr__(self):
         return '<Category %r>' % self.name
-
-
-class Todo(db.Model):
-    __tablename__ = 'todos'
-    id = db.Column('todo_id', db.Integer, primary_key=True)
-    title = db.Column(db.String(60))
-    text = db.Column(db.Text)
-    done = db.Column(db.Boolean)
-    pub_date = db.Column(db.DateTime)
-
-    def __init__(self, title='', text=''):
-        self.title = title
-        self.text = text
-        self.done = False
-        self.pub_date = datetime.utcnow()

@@ -5,9 +5,8 @@ import click
 from flask import json
 from flask.cli import with_appcontext
 
-name = 'shell_plus'
 
-
+@click.command()
 @with_appcontext
 def command():
     """Runs a shell in the app context.
@@ -37,7 +36,7 @@ Db: %s''' % (
 
     # import models
     print 'from models import db'
-    from models import db
+    from common.database import db
     import_to_context('models', shell_name_space)
     shell_name_space.update(db=db)
 
@@ -52,6 +51,3 @@ Db: %s''' % (
         )
     except ImportError:
         sys.exit(code.interact(banner=banner1, local=shell_name_space))
-
-
-command.name = name
