@@ -102,13 +102,18 @@
 ## 三. 自定义指令
 
 &emsp;&emsp;目前已经定义了`3`条自定义指令：
-  1. flush reset_db  
-    复位数据库，重建表。注意，该指令会drop所有表后重建表
-  2. flush load_schema  
-    加载schema.sql文件到db中
-  3. flush shell_plus   
+  1. flush drop_tables  
+    清空数据库表
+  2. flush load_sql
+    加载sql文件到db中
+  3. flush ipython   
     优先加载ipython作为交互shell，若ipython没有安装则记载默认shell，同时导入db和models
-    
+  4. clean   
+    清理pyc文件
+  5. urls   
+    打印路由表
+  6. test   
+    启动单元测试    
 
 ## 四. 配置文件
 
@@ -126,7 +131,7 @@
 
 工厂用于生成实际运行的app，主要组装过程包括：     
 ```
-加载配置-->注册蓝图-->注册命令-->初始化日志-->初始化db
+加载配置-->注册蓝图-->注册扩展-->注册命令-->初始化日志-->初始化db
 ```
 
 ## 六. 工程启动
