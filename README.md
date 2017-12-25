@@ -3,7 +3,7 @@
 &emsp;&emsp;flask入门样例，从[官方教程](http://docs.jinkan.org/docs/flask/tutorial/index.html)开始练起，并根据实际开发需要，
 合理的拆分各个模块，便于代码的维护。
 昨天偶然间找到[cookiecutter-flask](https://github.com/sloria/cookiecutter-flask)这款工具，于是乎试用了一下，发现十分惊艳，
-而且[cookiecutter](https://github.com/audreyr/cookiecutter)可以说是SaaS创建的福音，通过定制模板来时先工程结构初始化，
+而且[cookiecutter](https://github.com/audreyr/cookiecutter)可以说是SaaS工程构建的福音，通过模板的方式设计工程结构。
 于是乎，我试用了一下，并从中借鉴了许多，惭愧惭愧。       
 
 这里还有一篇文章，大家可以借鉴下：[Flask 大规模实践](http://liuliqiang.info/post/121/)
@@ -12,8 +12,10 @@
    
    - *blueprints*     
    &emsp;&emsp;将业务逻辑分给为多个blueprint（app），以便功能复用和维护
-   - *model*     
+   - *models*     
    &emsp;&emsp;数据库建模文件夹，包括主动建模和被动探测两种方式   
+   - *forms*     
+   &emsp;&emsp;存放forms文件   
    - *common*     
    &emsp;&emsp;存放通用功能，比如日志、json格式化、db等
    - *commands*     
@@ -24,9 +26,13 @@
    &emsp;&emsp;存放模板文件、Html文件
    - *config*  
    &emsp;&emsp;各环境配置，包括本地、测试、正式环境及各环境通用配置信息
+   - *tests*  
+   &emsp;&emsp;测试相关文件
+   - *requirements*  
+   &emsp;&emsp;工程依赖
    - *settings.py*  
    &emsp;&emsp;app配置入口
-   - *factory.py*  
+   - *app_maker.py*  
    &emsp;&emsp;app工厂
    - *app.py*     
    &emsp;&emsp;app入口
