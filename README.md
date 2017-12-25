@@ -3,8 +3,8 @@
 &emsp;&emsp;flask入门样例，从[官方教程](http://docs.jinkan.org/docs/flask/tutorial/index.html)开始练起，并根据实际开发需要，
 合理的拆分各个模块，便于代码的维护。
 昨天偶然间找到[cookiecutter-flask](https://github.com/sloria/cookiecutter-flask)这款工具，于是乎试用了一下，发现十分惊艳，
-而且[cookiecutter](https://github.com/audreyr/cookiecutter)可以说是SaaS创建的福音，通过定制模板来时先工程结构初始化，于是
-乎，我试用了一下，并从中借鉴了许多，惭愧惭愧。
+而且[cookiecutter](https://github.com/audreyr/cookiecutter)可以说是SaaS创建的福音，通过定制模板来时先工程结构初始化，
+于是乎，我试用了一下，并从中借鉴了许多，惭愧惭愧。       
 
 这里还有一篇文章，大家可以借鉴下：[Flask 大规模实践](http://liuliqiang.info/post/121/)
 
