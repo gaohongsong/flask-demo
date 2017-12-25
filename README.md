@@ -6,6 +6,8 @@
 而且[cookiecutter](https://github.com/audreyr/cookiecutter)可以说是SaaS创建的福音，通过定制模板来时先工程结构初始化，于是
 乎，我试用了一下，并从中借鉴了许多，惭愧惭愧。
 
+这里还有一篇文章，大家可以借鉴下：[Flask 大规模实践](http://liuliqiang.info/post/121/)
+
 ## 一. 目录结构：
    
    - *blueprints*     
