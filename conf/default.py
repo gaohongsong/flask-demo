@@ -34,12 +34,14 @@
 
 import os
 
-# code reload/debug online
 ENV = 'develop'
 DEBUG = True
 SECRET_KEY = os.urandom(24)
 SESSION_COOKIE_NAME = 'flask_session'
 
+# =======================================================
+# database
+# =======================================================
 DATABASES = {
     'default': {
         'HOST': '',
@@ -51,12 +53,41 @@ DATABASES = {
     },
 }
 
-# BCRYPT_LOG_ROUNDS = 13
+# =======================================================
+# bcrypt
+# =======================================================
 BCRYPT_LOG_ROUNDS = 4  # For faster tests; needs at least 4 to avoid "ValueError: Invalid rounds"
+
+# =======================================================
+# debug_tool_bar
+# =======================================================
 DEBUG_TB_ENABLED = False  # Disable Debug toolbar
 DEBUG_TB_INTERCEPT_REDIRECTS = False
+
+# =======================================================
+# cache
+# =======================================================
 CACHE_TYPE = 'simple'  # Can be "memcached", "redis", etc.
+
+# =======================================================
+# sqlalchemy
+# =======================================================
 SQLALCHEMY_ECHO = False
 SQLALCHEMY_TRACK_MODIFICATIONS = False
+
+# =======================================================
+# webpack
+# =======================================================
 WEBPACK_MANIFEST_PATH = 'webpack/manifest.json'
+
+# =======================================================
+# csrf
+# =======================================================
 WTF_CSRF_ENABLED = False  # Allows form testing
+
+# =======================================================
+# celery
+# =======================================================
+CELERY_BORKER_URL = 'redis://localhost:6379'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+CELERY_IMPORTS = ('common.tasks',)
