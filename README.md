@@ -218,16 +218,44 @@ cached_comments = get_all_comments()
 
 ```python
 
+# -*- coding: utf-8 -*-
+
+
+# Flask
 Flask==0.12.2
-SQLAlchemy==1.1.15
+MarkupSafe==1.0
+Werkzeug==0.13
+Jinja2==2.10
+itsdangerous==0.24
+click>=5.0
+
+# Database
 Flask-SQLAlchemy==2.3.2
-# MySQL-python==1.2.3
+psycopg2==2.7.3.2
+SQLAlchemy==1.1.15
 PyMySQL==0.6.7
+
+# Migrations
 Flask-Migrate==2.1.1
-Flask-Admin==1.5.0
-Flask-Cache==0.13.1
-flask-shell-ipython==0.3.0
-flask-sqlacodegen==1.1.6.1
-ipython==5.5.0
+
+# Forms
+Flask-WTF==0.14.2
+WTForms==2.1
+
+# Deployment
+gunicorn>=19.1.1
+
+# Webpack
+flask-webpack==0.1.0
+
+# Auth
+Flask-Login==0.4.1
+Flask-Bcrypt==0.7.1
+
+# Caching
+Flask-Caching>=1.0.0
+
+# Debug toolbar
+Flask-DebugToolbar==0.10.1
 
 ```

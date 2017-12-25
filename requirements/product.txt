@@ -1,5 +1,3 @@
-# Everything needed in production
-
 # -*- coding: utf-8 -*-
 
 
