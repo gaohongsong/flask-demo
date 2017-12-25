@@ -1,18 +1,23 @@
 # -*- coding: utf-8 -*-
 from datetime import datetime
 
-from common.database import db, Model, SurrogatePK
+from common.database import (db, Model, Column, SurrogatePK,
+                             reference_col, relationship)
 
 
 class Post(SurrogatePK, Model):
-    id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(80))
-    body = db.Column(db.Text)
-    pub_date = db.Column(db.DateTime)
+    __tablename__ = 'posts'
 
-    category_id = db.Column(db.Integer, db.ForeignKey('category.id'))
-    category = db.relationship('Category',
-                               backref=db.backref('posts', lazy='dynamic'))
+    id = Column(db.Integer, primary_key=True)
+    title = Column(db.String(80))
+    body = Column(db.Text)
+    pub_date = Column(db.DateTime)
+
+    category_id = reference_col('category', nullable=True)
+    category = relationship('Category', backref='posts')
+
+    # category_id = Column(db.Integer, db.ForeignKey('category.id'))
+    # category = db.relationship('Category', backref=db.backref('posts', lazy='dynamic'))
 
     def __init__(self, title='', body='', category=None, pub_date=None):
         self.title = title
@@ -27,9 +32,11 @@ class Post(SurrogatePK, Model):
 
 
 class Category(SurrogatePK, Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(50))
-    desc = db.Column(db.String(50))
+    __tablename__ = 'category'
+
+    id = Column(db.Integer, primary_key=True)
+    name = Column(db.String(50))
+    desc = Column(db.String(50))
 
     def __init__(self, name=''):
         self.name = name

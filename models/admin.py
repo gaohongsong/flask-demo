@@ -1,10 +1,15 @@
 # -*- coding: utf-8 -*-
 from flask_admin.contrib.sqla import ModelView
-
-from common.extensions import admin, db
+from flask_admin import Admin
 
 from models.user import User
 from models.blog import Post, Category
+
+from common.extensions import db
+
+# from common.extensions import admin
+
+admin = Admin(name='Flask-Admin', template_mode='bootstrap3')
 
 
 class PostModelView(ModelView):

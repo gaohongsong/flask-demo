@@ -9,9 +9,10 @@ from werkzeug.utils import find_modules, import_string
 
 from common.http import JsonResponse
 from common.converters import ListConverter
-from common.extensions import (cache, db, admin, logger, migrate,
+from common.extensions import (cache, db, logger, migrate,
                                bcrypt, csrf_protect, login_manager,
                                debug_toolbar, webpack)
+from models.admin import admin
 
 
 def create_app(name=__name__):
@@ -46,8 +47,8 @@ def register_extensions(app):
     logger.init_app(app, 'flask.log')
     db.init_app(app)
     migrate.init_app(app, db)
-    admin.init_app(app)
     cache.init_app(app)
+    admin.init_app(app)
 
     bcrypt.init_app(app)
     csrf_protect.init_app(app)

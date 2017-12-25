@@ -3,12 +3,12 @@
 from flask import Blueprint, render_template
 from flask_login import login_required
 
-name = 'user'
-bp = Blueprint('user', __name__, url_prefix='/users')
+name = 'member'
+bp = Blueprint(name, __name__, url_prefix='/%s' % name)
 
 
 @bp.route('/')
 @login_required
 def members():
     """List members."""
-    return render_template('users/members.html')
+    return render_template('member/members.html')
