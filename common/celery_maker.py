@@ -19,7 +19,7 @@ def make_celery(app):
         broker=app.config['CELERY_BORKER_URL']
     )
     celery.conf.update(app.config)
-
+    # celery.add_defaults(lambda : app.config)
     TaskBase = celery.Task
 
     # creates a subclass of the task
