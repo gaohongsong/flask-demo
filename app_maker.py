@@ -13,6 +13,7 @@ from common.extensions import (cache, db, logger, migrate,
                                bcrypt, csrf_protect, login_manager,
                                debug_toolbar, webpack)
 
+# from common.extensions import celery
 from models.admin import admin
 from common.utils import import_to_context
 
@@ -55,6 +56,9 @@ def register_extensions(app):
     migrate.init_app(app, db)
     cache.init_app(app)
     admin.init_app(app)
+
+    # KeyError: 'CELERY_BROKER_URL'
+    # celery.init_app(app)
 
     bcrypt.init_app(app)
     csrf_protect.init_app(app)

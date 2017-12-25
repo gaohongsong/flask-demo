@@ -10,6 +10,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_webpack import Webpack
 from flask_wtf.csrf import CSRFProtect
 # from flask_admin import Admin
+# from flask_celery import Celery
 from common.logger import Logger
 
 logger = Logger()
@@ -23,6 +24,6 @@ login_manager = LoginManager()
 debug_toolbar = DebugToolbarExtension()
 webpack = Webpack()
 
-# deprecated here and move to models.admin.py
+# integrated failed temporary
 # admin = Admin(name='Flask-Admin', template_mode='bootstrap3')
-
+# celery = Celery()
