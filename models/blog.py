@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 from datetime import datetime
 
-from common.database import db, Model
+from common.database import db, Model, SurrogatePK
 
 
-class Post(Model):
+class Post(SurrogatePK, Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(80))
     body = db.Column(db.Text)
@@ -26,7 +26,7 @@ class Post(Model):
         return '<Post %r>' % self.title
 
 
-class Category(Model):
+class Category(SurrogatePK, Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50))
     desc = db.Column(db.String(50))
