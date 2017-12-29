@@ -36,8 +36,6 @@ def create_app(name=__name__):
 
     register_blueprints(app)
 
-    register_apis(app)
-
     register_commands(app)
 
     register_extensions(app)
@@ -47,20 +45,6 @@ def create_app(name=__name__):
     register_shellcontext(app)
 
     return app
-
-
-def register_apis(app, pkg='blueprints'):
-    """register all api modules in resources package
-    """
-    for name in find_modules(pkg):
-        try:
-            mod = import_string(name)
-            if hasattr(mod, 'api'):
-                print '[{}] register api.'.format(name)
-                mod.api.init_app(app)
-        except Exception as e:
-            print '[{}] register api: {}'.format(name, e)
-    return None
 
 
 def register_extensions(app):
@@ -90,9 +74,10 @@ def register_blueprints(app, pkg='blueprints'):
         try:
             mod = import_string(name)
             if hasattr(mod, 'bp'):
+                print '[{}] register blueprints: {}'.format(name, mod.bp.url_prefix)
                 app.register_blueprint(mod.bp)
         except Exception as e:
-            print '[{}] register blueprints: {}'.format(name, e)
+            print '[{}] register api/blueprints: {}'.format(name, e)
     return None
 
 

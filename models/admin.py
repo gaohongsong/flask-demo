@@ -7,10 +7,10 @@ from models.blog import Post, Category
 
 from common.extensions import db
 
-# from common.extensions import admin
+admin = Admin(name='Flask-Admin')
 
-admin = Admin(name='Flask-Admin', template_mode='bootstrap3')
 
+# admin = Admin(name='Flask-Admin', template_mode='bootstrap3')
 
 class PostModelView(ModelView):
     can_delete = False  # disable model deletion

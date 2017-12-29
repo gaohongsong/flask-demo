@@ -24,7 +24,7 @@ debug_toolbar = DebugToolbarExtension()
 webpack = Webpack()
 
 # from flask_admin import Admin
+# admin = Admin(name='Flask-Admin', template_mode='bootstrap3')
 # from flask_celery import Celery
 # integrated failed temporary
-# admin = Admin(name='Flask-Admin', template_mode='bootstrap3')
 # celery = Celery()
