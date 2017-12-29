@@ -12,7 +12,6 @@ from common.converters import ListConverter
 from common.extensions import (cache, db, logger, migrate,
                                bcrypt, csrf_protect, login_manager,
                                debug_toolbar, webpack)
-
 # from common.extensions import celery
 from models.admin import admin
 from common.utils import import_to_context
@@ -25,7 +24,7 @@ def create_app(name=__name__):
     app.config.from_object('settings')
 
     # return json response
-    app.response_class = JsonResponse
+    # app.response_class = JsonResponse
 
     # register a new converter
     app.url_map.converters.update(list=ListConverter)
@@ -36,6 +35,8 @@ def create_app(name=__name__):
     })
 
     register_blueprints(app)
+
+    register_apis(app)
 
     register_commands(app)
 
@@ -48,6 +49,20 @@ def create_app(name=__name__):
     return app
 
 
+def register_apis(app, pkg='blueprints'):
+    """register all api modules in resources package
+    """
+    for name in find_modules(pkg):
+        try:
+            mod = import_string(name)
+            if hasattr(mod, 'api'):
+                print '[{}] register api.'.format(name)
+                mod.api.init_app(app)
+        except Exception as e:
+            print '[{}] register api: {}'.format(name, e)
+    return None
+
+
 def register_extensions(app):
     """Register Flask extensions."""
 
@@ -56,7 +71,6 @@ def register_extensions(app):
     migrate.init_app(app, db)
     cache.init_app(app)
     admin.init_app(app)
-
     # KeyError: 'CELERY_BROKER_URL'
     # celery.init_app(app)
 
@@ -78,7 +92,7 @@ def register_blueprints(app, pkg='blueprints'):
             if hasattr(mod, 'bp'):
                 app.register_blueprint(mod.bp)
         except Exception as e:
-            print '[{}]register blueprints: {}'.format(name, e)
+            print '[{}] register blueprints: {}'.format(name, e)
     return None
 
 
@@ -90,7 +104,7 @@ def register_commands(app, pkg='commands'):
             if hasattr(mod, 'command'):
                 app.cli.add_command(mod.command, name=name.split('.')[1])
         except Exception as e:
-            print '[{}]register cmd: {}'.format(name, e)
+            print '[{}] register cmd: {}'.format(name, e)
 
     return None
 

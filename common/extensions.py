@@ -9,8 +9,7 @@ from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 from flask_webpack import Webpack
 from flask_wtf.csrf import CSRFProtect
-# from flask_admin import Admin
-# from flask_celery import Celery
+
 from common.logger import Logger
 
 logger = Logger()
@@ -24,6 +23,8 @@ login_manager = LoginManager()
 debug_toolbar = DebugToolbarExtension()
 webpack = Webpack()
 
+# from flask_admin import Admin
+# from flask_celery import Celery
 # integrated failed temporary
 # admin = Admin(name='Flask-Admin', template_mode='bootstrap3')
 # celery = Celery()

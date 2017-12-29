@@ -38,7 +38,10 @@ Flask-Caching>=1.0.0
 Flask-DebugToolbar==0.10.1
 
 # Flask Admin 
-Flask-Admin==0.4.1
+Flask-Admin==1.5.0
+
+# Flask Restful
+Flask-Restful==0.3.6
 
 # celery
 celery==3.1.18
