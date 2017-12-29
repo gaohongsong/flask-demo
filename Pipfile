@@ -1,8 +1,8 @@
 [[source]]
 
-url = "https://mirrors.aliyun.com/pypi/simple"
-verify_ssl = true
-name = "aliyun"
+url = "http://pypi.douban.com/simple"
+verify_ssl = false
+name = "douban"
 
 
 [dev-packages]
